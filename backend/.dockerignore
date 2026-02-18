@@ -1,0 +1,44 @@
+# Dependencies (installed in container)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Environment and secrets
+.env
+.env.*
+!.env.example
+
+# Git
+.git
+.gitignore
+.gitmodules
+
+# Build and output
+dist/
+build/
+out/
+coverage/
+
+# Logs and temp
+logs/
+*.log
+.cache/
+.DS_Store
+
+# IDE and misc
+.vscode/
+.idea/
+*.sw?
+*.swo
+*.local
+
+# Sensitive data
+*.pem
+*.key
+*credentials*
+*secrets*
+seed-admins.json
+exports/
+*.json.backup

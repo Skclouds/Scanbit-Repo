@@ -1,0 +1,10 @@
+export { default as GeneralSettings } from './GeneralSettings';
+export { default as LogoBranding } from './LogoBranding';
+export { default as Typography } from './Typography';
+export { default as ColorsTheme } from './ColorsTheme';
+export { default as LayoutStructure } from './LayoutStructure';
+export { default as ImagesMedia } from './ImagesMedia';
+export { default as AnimationsEffects } from './AnimationsEffects';
+export { default as SectionsComponents } from './SectionsComponents';
+export { default as SEOMetaTags } from './SEOMetaTags';
+export { default as PreviewPublish } from './PreviewPublish';

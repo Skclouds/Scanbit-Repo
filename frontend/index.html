@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- API base URL: app uses this first so it always hits your server. Change if backend is elsewhere. -->
+    <script>window.__SCANBIT_API_URL__ = 'https://server.scanbit.in/api';</script>
+    <meta charset="UTF-8" />
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://static.cloudflareinsights.com https://checkout.razorpay.com https://api.razorpay.com; connect-src 'self' https: wss: blob: http://localhost http://127.0.0.1 https://server.scanbit.in https://scanbit.in https://www.scanbit.in https://test1.scanbit.in https://static.cloudflareinsights.com https://www.googletagmanager.com https://www.google-analytics.com https://checkout.razorpay.com https://api.razorpay.com; img-src 'self' data: blob: https:; style-src 'self' 'unsafe-inline' https:; font-src 'self' https: data:; frame-src 'self' https://api.razorpay.com https://checkout.razorpay.com" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <title>Scanbit - One QR. One Digital Look.</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="description" content="Transform your business with beautiful QR-based digital solutions." />
+    <meta property="og:title" content="Scanbit - One QR. One Digital Look." />
+    <meta property="og:description" content="Transform your business with beautiful QR-based digital solutions." />
+    <meta property="og:type" content="website" />
+    <script>
+      if (typeof globalThis === 'undefined') { window.globalThis = window; }
+      window.__scanbitErrors = [];
+      function safeStr(val) {
+        try {
+          if (val == null) return 'Unknown';
+          var err = val.error || val;
+          var s = (err && err.message) ? String(err.message) : (val.message || String(val));
+          s = s.slice(0, 500).replace(/</g, '&lt;').replace(/>/g, '&gt;');
+          return s;
+        } catch (_) { return 'Error'; }
+      }
+      function safeStack(val) {
+        try {
+          var err = (val && val.error) || val;
+          if (!err || !err.stack) return '';
+          return String(err.stack).slice(0, 800).replace(/</g, '&lt;').replace(/>/g, '&gt;');
+        } catch (_) { return ''; }
+      }
+      function isRangeError(val) {
+        try {
+          var err = (val && val.error) || val;
+          var name = err && err.name;
+          var msg = (err && err.message) ? String(err.message) : (val.message || '');
+          return (name && name.indexOf('Range') !== -1) || msg.indexOf('Range') !== -1 || msg.indexOf('call stack') !== -1;
+        } catch (_) { return false; }
+      }
+      var RELOAD_KEY = '__scanbit_error_reload';
+      function tryReloadOnce() {
+        try {
+          if (typeof sessionStorage === 'undefined') return false;
+          if (sessionStorage.getItem(RELOAD_KEY)) return false;
+          sessionStorage.setItem(RELOAD_KEY, '1');
+          location.reload();
+          return true;
+        } catch (_) { return false; }
+      }
+      function errorHtml(msg, stack) {
+        var tech = (msg ? '<p style="margin:0 0 8px;font-size:11px;opacity:0.9">' + msg + '</p>' : '') + (stack ? '<pre style="margin:0 0 24px;font-size:10px;opacity:0.75;white-space:pre-wrap;word-break:break-all;max-height:120px;overflow:auto">' + stack + '</pre>' : '');
+        var isCSP = (msg && (msg.indexOf('Content Security Policy') !== -1 || msg.indexOf('refused to connect') !== -1 || msg.indexOf('Load failed') !== -1));
+        var hint = isCSP ? '<p style="margin:0 0 16px;font-size:14px;color:#b45309">On iPhone/iPad: try Safari Settings &rarr; turn off "Block All Cookies" or "Prevent Cross-Site Tracking" for this site, or use a different network.</p>' : '';
+        return '<div style="padding:24px;font-family:-apple-system,system-ui,sans-serif;background:#fef2f2;color:#991b1b;min-height:100vh;box-sizing:border-box;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;max-width:520px;margin:0 auto"><h2 style="margin:0 0 12px;font-size:20px">Something went wrong</h2><p style="margin:0 0 16px;white-space:pre-wrap;word-break:break-word;font-size:14px;line-height:1.5">Tap Refresh to try again. On a real iPhone/iPad, try &quot;Clear cache and retry&quot; if refresh does not help.</p>' + hint + '<details open style="margin:0 0 20px;font-size:12px;width:100%"><summary style="cursor:pointer">Technical details</summary>' + tech + '</details><div style="display:flex;flex-wrap:wrap;gap:12px"><button onclick="location.reload()" style="padding:16px 32px;background:#dc2626;color:#fff;border:none;border-radius:8px;cursor:pointer;font-size:18px;font-weight:600;-webkit-tap-highlight-color:transparent">Refresh page</button><button onclick="(function(){try{localStorage.removeItem(\'siteSettingsCache\');sessionStorage.removeItem(\'__scanbit_error_reload\');}catch(e){}location.reload();})()" style="padding:16px 32px;background:#b45309;color:#fff;border:none;border-radius:8px;cursor:pointer;font-size:16px;font-weight:600;-webkit-tap-highlight-color:transparent">Clear cache and retry</button></div></div>';
+      }
+      function isIOS() {
+        var ua = typeof navigator !== 'undefined' && navigator.userAgent ? navigator.userAgent : '';
+        return ua.indexOf('iPad') !== -1 || ua.indexOf('iPhone') !== -1 || ua.indexOf('iPod') !== -1 || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+      }
+      function isNetworkOnlyError(msg) {
+        if (!msg || typeof msg !== 'string') return false;
+        var m = msg.toLowerCase();
+        return m.indexOf('failed to fetch') !== -1 || m.indexOf('network error') !== -1 || m.indexOf('load failed') !== -1 || m.indexOf('networkrequestfailed') !== -1 || m.indexOf('cors') !== -1 || m.indexOf('cross-origin') !== -1;
+      }
+      function showError(r, msg, stack) {
+        try {
+          if (!r || !r.querySelector('#app-loading')) return;
+          if (tryReloadOnce()) return;
+          r.innerHTML = errorHtml(msg, stack);
+        } catch (_) {}
+      }
+      window.addEventListener('error', function(e) {
+        try {
+          var msg = safeStr(e);
+          window.__scanbitErrors.push(msg);
+          var r = document.getElementById('root');
+          if (r && r.querySelector('#app-loading')) {
+            if (isIOS() && isNetworkOnlyError(msg)) return;
+            showError(r, msg, safeStack(e));
+          }
+        } catch (_) {}
+      });
+      window.addEventListener('unhandledrejection', function(e) {
+        try {
+          var msg = safeStr(e.reason);
+          window.__scanbitErrors.push(msg);
+          var r = document.getElementById('root');
+          if (r && r.querySelector('#app-loading')) {
+            if (isIOS() && isNetworkOnlyError(msg)) return;
+            var st = '';
+            try { st = (e.reason && e.reason.stack) ? String(e.reason.stack).slice(0, 800).replace(/</g, '&lt;').replace(/>/g, '&gt;') : ''; } catch (_) {}
+            showError(r, msg, st);
+          }
+        } catch (_) {}
+      });
+    </script>
+  </head>
+  <body style="margin:0;background:#fff;min-height:100vh;-webkit-text-size-adjust:100%">
+    <div id="root">
+      <!-- Single loader is shown by React (SiteSettingsProvider) until ready -->
+      <div id="app-loading" style="min-height:100vh;background:#fff"></div>
+    </div>
+    <noscript><p style="padding:2rem;text-align:center;font-family:system-ui">JavaScript is required. Please enable it.</p></noscript>
+    <script type="module" src="/src/main.tsx" data-cfasync="false"></script>
+    <script>
+      window.addEventListener('load',function(){setTimeout(function(){
+        var l=document.createElement('link');l.rel='stylesheet';l.href='https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap';document.head.appendChild(l);
+        window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}window.gtag=gtag;
+        var s=document.createElement('script');s.src='https://www.googletagmanager.com/gtag/js?id=G-TBNMZHMXWV';s.async=1;s.onerror=function(){};document.head.appendChild(s);
+        s.onload=function(){try{gtag('js',new Date());gtag('config','G-TBNMZHMXWV',{send_page_view:true,anonymize_ip:true})}catch(e){}};
+      },2000)});
+    </script>
+    <script>
+      (function(){
+        var ua = typeof navigator !== 'undefined' && navigator.userAgent ? navigator.userAgent : '';
+        var isIOS = ua.indexOf('iPad') !== -1 || ua.indexOf('iPhone') !== -1 || ua.indexOf('iPod') !== -1 || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+        var host = typeof location !== 'undefined' ? location.hostname : '';
+        var isLocalNetwork = false;
+        if (host === 'localhost' || host === '127.0.0.1') isLocalNetwork = true;
+        else if (host.length > 0) {
+          var parts = host.split('.');
+          if (parts.length === 4) {
+            var a = parseInt(parts[0], 10), b = parseInt(parts[1], 10);
+            if (!isNaN(a) && !isNaN(b)) {
+              if (a === 10) isLocalNetwork = true;
+              else if (a === 172 && b >= 16 && b <= 31) isLocalNetwork = true;
+              else if (a === 192 && b === 168) isLocalNetwork = true;
+              else if (a === 127) isLocalNetwork = true;
+            }
+          }
+        }
+        var delayMs = isLocalNetwork ? 120000 : (isIOS ? 90000 : 120000);
+        window.__scanbitLoadTimeout = setTimeout(function(){
+          window.__scanbitLoadTimeout = null;
+          var r = document.getElementById('root');
+          if (r && r.querySelector('#app-loading')) {
+            var msg = '<p style="margin:0 0 0.5rem;font-size:18px;color:#111">Taking longer than usual</p><p style="margin:0 0 1rem;font-size:14px;color:#6b7280">Check your connection. If problems persist, clear browser data and retry.</p>';
+            r.innerHTML = '<div style="display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;padding:2rem;font-family:-apple-system,sans-serif;text-align:center">' + msg + '<button onclick="location.reload()" style="padding:14px 28px;background:#f97316;color:#fff;border:none;border-radius:8px;font-size:16px;cursor:pointer;-webkit-tap-highlight-color:transparent">Try again</button></div>';
+          }
+        }, delayMs);
+        if (isIOS) {
+          setTimeout(function(){
+            var r = document.getElementById('root');
+            if (!r) return;
+            if (r.getAttribute('data-scanbit-mounted') === '1') return;
+            var loading = r.querySelector('#app-loading');
+            var hasContent = r.querySelector('button') || r.querySelector('[style*="flex"]');
+            if (loading && !hasContent && r.children.length <= 1) {
+              var msg = '<p style="margin:0 0 0.5rem;font-size:18px;color:#111">Having trouble loading?</p><p style="margin:0 0 1rem;font-size:14px;color:#6b7280">Tap the button below to refresh.</p>';
+              r.innerHTML = '<div style="display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;padding:2rem;font-family:-apple-system,sans-serif;text-align:center">' + msg + '<button onclick="location.reload()" style="padding:14px 28px;background:#f97316;color:#fff;border:none;border-radius:8px;font-size:16px;cursor:pointer;-webkit-tap-highlight-color:transparent">Refresh page</button></div>';
+            }
+          }, 12000);
+        }
+      })();
+    </script>
+  </body>
+</html>

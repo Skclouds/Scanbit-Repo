@@ -1,0 +1,272 @@
+/* Fonts loaded via link in index.html to avoid render-blocking on iOS Safari */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Dynamic site settings (can be overwritten via JS) */
+    --primary-color: hsl(25, 95%, 53%);
+    --secondary-color: #1f2937;
+    --bg-color: #ffffff;
+    --text-color: #111827;
+    --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Poppins', system-ui, sans-serif;
+    --base-font-size: 16px;
+
+    --background: 30 15% 98%;
+    --foreground: 20 20% 10%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 20 20% 10%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 20 20% 10%;
+
+    --primary: 25 95% 53%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 30 10% 94%;
+    --secondary-foreground: 20 20% 15%;
+
+    --muted: 30 10% 94%;
+    --muted-foreground: 20 10% 45%;
+
+    --accent: 160 60% 45%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 30 15% 88%;
+    --input: 30 15% 88%;
+    --ring: 25 95% 53%;
+
+    --radius: 0.75rem;
+
+    /* Custom tokens */
+    --gradient-primary: linear-gradient(135deg, hsl(25, 95%, 53%) 0%, hsl(35, 100%, 60%) 100%);
+    --gradient-hero: linear-gradient(180deg, hsl(30, 15%, 98%) 0%, hsl(35, 20%, 95%) 100%);
+    --gradient-dark: linear-gradient(135deg, hsl(20, 20%, 8%) 0%, hsl(25, 15%, 12%) 100%);
+    --gradient-card: linear-gradient(180deg, hsl(0, 0%, 100%) 0%, hsl(30, 15%, 98%) 100%);
+    --shadow-soft: 0 4px 20px -2px hsla(25, 95%, 53%, 0.15);
+    --shadow-card: 0 4px 30px -4px hsla(20, 20%, 10%, 0.08);
+    --shadow-elevated: 0 20px 50px -12px hsla(20, 20%, 10%, 0.15);
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 25 95% 53%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 30 10% 94%;
+    --sidebar-accent-foreground: 20 20% 15%;
+    --sidebar-border: 30 15% 88%;
+    --sidebar-ring: 25 95% 53%;
+  }
+
+  .dark {
+    --background: 20 20% 6%;
+    --foreground: 30 15% 95%;
+
+    --card: 20 18% 10%;
+    --card-foreground: 30 15% 95%;
+
+    --popover: 20 18% 10%;
+    --popover-foreground: 30 15% 95%;
+
+    --primary: 25 95% 55%;
+    --primary-foreground: 20 20% 6%;
+
+    --secondary: 20 15% 15%;
+    --secondary-foreground: 30 15% 90%;
+
+    --muted: 20 15% 15%;
+    --muted-foreground: 30 10% 55%;
+
+    --accent: 160 60% 50%;
+    --accent-foreground: 20 20% 6%;
+
+    --destructive: 0 70% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 20 15% 18%;
+    --input: 20 15% 18%;
+    --ring: 25 95% 55%;
+
+    --sidebar-background: 20 20% 8%;
+    --sidebar-foreground: 30 15% 90%;
+    --sidebar-primary: 25 95% 55%;
+    --sidebar-primary-foreground: 20 20% 6%;
+    --sidebar-accent: 20 15% 15%;
+    --sidebar-accent-foreground: 30 15% 90%;
+    --sidebar-border: 20 15% 18%;
+    --sidebar-ring: 25 95% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'DM Sans', sans-serif;
+    background-color: hsl(30, 15%, 98%) !important;
+    color: hsl(20, 20%, 10%) !important;
+    margin: 0;
+    padding: 0;
+    /* iOS: prevent tap highlight, smooth overscroll */
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+  }
+
+  #root {
+    min-height: 100vh;
+    width: 100%;
+    background-color: hsl(30, 15%, 98%) !important;
+    color: hsl(20, 20%, 10%) !important;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Poppins', sans-serif;
+  }
+}
+
+@layer components {
+  .gradient-primary {
+    background: var(--gradient-primary);
+  }
+
+  .gradient-hero {
+    background: var(--gradient-hero);
+  }
+
+  .gradient-dark {
+    background: var(--gradient-dark);
+  }
+
+  .gradient-card {
+    background: var(--gradient-card);
+  }
+
+  .shadow-soft {
+    box-shadow: var(--shadow-soft);
+  }
+
+  .shadow-card {
+    box-shadow: var(--shadow-card);
+  }
+
+  .shadow-elevated {
+    box-shadow: var(--shadow-elevated);
+  }
+
+  .text-gradient {
+    background: linear-gradient(135deg, hsl(25, 95%, 53%) 0%, hsl(35, 100%, 60%) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .text-gradient-animated {
+    background: linear-gradient(135deg, hsl(25, 95%, 53%) 0%, hsl(35, 100%, 60%) 50%, hsl(160, 60%, 45%) 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gradient-shift 3s ease infinite;
+  }
+
+  @keyframes gradient-shift {
+    0%, 100% {
+      background-position: 0% center;
+    }
+    50% {
+      background-position: 100% center;
+    }
+  }
+
+  .text-shadow-creative {
+    text-shadow: 0 4px 20px rgba(255, 107, 53, 0.3), 0 2px 10px rgba(255, 107, 53, 0.2);
+  }
+
+  .glass-card {
+    @apply bg-card/80 backdrop-blur-xl border border-border/50;
+  }
+
+  .hover-lift {
+    @apply transition-all duration-300 ease-out;
+  }
+
+  .hover-lift:hover {
+    @apply -translate-y-1;
+    box-shadow: var(--shadow-elevated);
+  }
+}
+
+@layer utilities {
+  .animate-fade-in {
+    animation: fadeIn 0.6s ease-out forwards;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.6s ease-out forwards;
+  }
+
+  .animate-scale-in {
+    animation: scaleIn 0.4s ease-out forwards;
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes slideUp {
+    from { 
+      opacity: 0; 
+      transform: translateY(20px); 
+    }
+    to { 
+      opacity: 1; 
+      transform: translateY(0); 
+    }
+  }
+
+  @keyframes scaleIn {
+    from { 
+      opacity: 0; 
+      transform: scale(0.95); 
+    }
+    to { 
+      opacity: 1; 
+      transform: scale(1); 
+    }
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}

@@ -1,0 +1,39 @@
+# Dependencies (install in container)
+node_modules/
+npm-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+bun.lockb
+
+# Environment (inject at build/runtime)
+.env
+.env.*
+!.env.example
+
+# Git and IDE
+.git/
+.gitignore
+.vscode/
+.idea/
+
+# Build output (we build inside Docker)
+dist/
+build/
+
+# Docs (not needed in image)
+*.md
+!README.md
+
+# Test and tooling
+coverage/
+*.test.ts
+*.test.tsx
+*.spec.ts
+*.spec.tsx
+vitest.config.ts
+eslint.config.js
+
+# OS and misc
+.DS_Store
+*.log
+.cache/

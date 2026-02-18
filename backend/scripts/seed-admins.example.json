@@ -1,0 +1,14 @@
+[
+  {
+    "email": "admin@scanbit.com",
+    "name": "Master Admin",
+    "password": "ChangeMe@123",
+    "master": true
+  },
+  {
+    "email": "support@scanbit.com",
+    "name": "Support Admin",
+    "password": "Support@456",
+    "master": false
+  }
+]
